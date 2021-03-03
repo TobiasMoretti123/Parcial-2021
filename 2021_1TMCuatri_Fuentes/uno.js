@@ -36,7 +36,7 @@ function mostrar()
 	cantidadIac = 0;
 	cantidadQuat = 0;
 	acumuladorCantidad = 0;
-	cantidadIacMayorA200 = 0;
+	cantidadIacMenorA200 = 0;
 	banderaCantidad = true;
 	banderaMasCaro = true;
 
@@ -104,7 +104,8 @@ function mostrar()
 		{
 			masCaro = precioProducto;
 			marcaMasCara = marcaIngresada;
-			tipoMasCaro = tipoInflamable;	
+			tipoMasCaro = tipoInflamable;
+			banderaMasCaro == false;	
 		}
 		else
 		{
