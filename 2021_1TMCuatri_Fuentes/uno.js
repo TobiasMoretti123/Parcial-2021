@@ -26,12 +26,19 @@ function mostrar()
 	var inflamableMasCantidad;
 	var masCantidad;
 	var banderaCantidad;
+	var cantidadIacMenorA200;
+	var marcaMasCara;
+	var tipoMasCaro
+	var masCaro;
+	var banderaMasCaro;
 
 	cantidadAlcohol = 0;
 	cantidadIac = 0;
 	cantidadQuat = 0;
 	acumuladorCantidad = 0;
+	cantidadIacMayorA200 = 0;
 	banderaCantidad = true;
+	banderaMasCaro = true;
 
 	for(var i=0;i<5;i++)
 	{
@@ -70,10 +77,43 @@ function mostrar()
 				break;
 			case "IAC":
 				cantidadIac ++
+				if (precioProducto<=200) 
+				{
+					cantidadIacMenorA200 ++	
+				}
 				break;
 			case "QUAT":
 				cantidadQuat ++
 				break;
+		}
+		if (banderaCantidad==true) 
+		{
+			inflamableMasCantidad = tipoInflamable;
+			masCantidad = cantidadUnidades;
+			banderaCantidad = false;
+		}
+		else
+		{
+			if (masCantidad<cantidadUnidades) 
+			{
+				inflamableMasCantidad = tipoInflamable;
+				masCantidad = cantidadUnidades;	
+			}
+		}
+		if (banderaMasCaro == true) 
+		{
+			masCaro = precioProducto;
+			marcaMasCara = marcaIngresada;
+			tipoMasCaro = tipoInflamable;	
+		}
+		else
+		{
+			if (masCaro<precioProducto) 
+			{
+				masCaro = precioProducto;
+				marcaMasCara = marcaIngresada;
+				tipoMasCaro = tipoInflamable;
+			}
 		}
 
 		acumuladorCantidad = cantidadQuat+cantidadAlcohol+cantidadIac;
@@ -83,5 +123,56 @@ function mostrar()
 	promedioQuat = cantidadQuat/acumuladorCantidad;
 	promedioIac = cantidadIac/acumuladorCantidad;
 
-	//a) El promedio de cantidad por tipo de producto
+	if (promedioAlcohol==0) 
+	{
+		document.write("a)No se ingreso ningun ALCOHOL")
+		
+	}
+	else
+	{
+		if (promedioIac==0) 
+		{
+			document.write("a)No se ingreso ningun IAC")
+		}
+		else
+		{
+			if (promedioQuat==0) 
+			{
+				document.write("a)No se ingreso ningun QUAT")
+			}
+			else
+			{
+				document.write("a)El promedio de cantidad ALCOHOL es de :"+promedioAlcohol,
+				"<br/>El promedio de cantidad de IAC es de: "+promedioIac,
+				"<br/>El promedio de cantidad de QUAT es de: "+promedioIac)
+			}
+		}
+	}
+	if (banderaCantidad == true) 
+	{
+		document.write("<br/>b)No se ingreso ningun Inflamable");	
+	}
+	else
+	{
+		document.write("<br/>b)El tipo de inflamable con mas cantidad es: "+inflamableMasCantidad)
+	}
+
+	if (cantidadIacMenorA200==0) 
+	{
+		document.write("<br/>c)No se ingreso ningun IAC mayor a 200 pesos");
+	}
+	else
+	{
+		document.write("<br/>c)La cantidad de unidades IAC menor a 200 pesos es de: "+cantidadIacMenorA200);
+	}
+
+	if (banderaMasCaro == true) 
+	{
+		document.write("<br/>d)No se agrego ningun tipo");	
+	}
+	else
+	{
+		document.write("<br/>d)La marca mas cara es: "+marcaMasCara+" Y el tipo es: "+tipoMasCaro);	
+	}
+
 }
