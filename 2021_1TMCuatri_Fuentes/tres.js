@@ -24,7 +24,7 @@ function mostrar()
 	var laMasJoven;
 	var nombreDeLaMasJoven;
 	var banderaMasJoven;
-	var contadorViajes;
+	var cantidadViajes;
 	var valorViajes;
 	var contadorMas60;
 	var porcentajeViajes;
@@ -118,6 +118,5 @@ function mostrar()
 	{
 		valorViajes = valorViajes - valorViajes*25/100;
 		document.write("<br/>d)El precio final del viaje porque mas del 50% del pasaje es de 60 o mas años es de: "+valorViajes)
-
 	}
 }
